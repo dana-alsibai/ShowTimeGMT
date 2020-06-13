@@ -1,4 +1,4 @@
-  /*
+/*
         Name:  [your name here]
         Assignment:  [assignment name]
         Program: [your program name here]
@@ -6,39 +6,36 @@
     
         Description:
         [program description in your own words]
-    */
+ */
 package showcurrenttime;
+
+import java.util.Scanner;
 
 /**
  *
  * @author danasebai
  */
-public class ShowCurrentTime {
+public class ShowCurrentTime extends TimeOffsetToGMT {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //obtain the total milliSeconds since midnight, Jan 1971
-        long totalMilliSeconds = System.currentTimeMillis();
-        
-        //totalSeconds
-        long totalSeconds = totalMilliSeconds / 1000;
-        
-        long currentSecond = (int) (totalSeconds % 60);
-        
-        //obtain totalMinutes
-        long totalMinutes = totalSeconds / 60;
-        
-        long currentMinute = (int) (totalMinutes % 60);
-        
-        long totalHours = totalMinutes / 60;
 
-        long currentHours = (int) (totalHours % 24);
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Current time is " + currentHours + " : "
-                + currentMinute + ": " + currentSecond + " GMT");
+        System.out.print("Enter the time zone offset to GMT: ");
 
-    }
+        int timeOffestToGmt = sc.nextInt();
 
+        TimeOffsetToGMT offset = new TimeOffsetToGMT();
+        offset.setTimeOffsetToGmt(timeOffestToGmt);
+        
+        offset.showCurrentTime();
+        offset.showTime(timeOffestToGmt);
+    
+        System.out.println(offset.toString());
+   
+    } 
 }
+
